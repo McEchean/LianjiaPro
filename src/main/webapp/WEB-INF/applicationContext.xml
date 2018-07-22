@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="com.echean.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--加载数据库配置文件-->
+    <context:property-placeholder location="classpath:mysql/mysql.properties"/>
+    <!--配置数据库数据来源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+    </bean>
+
+    <!--配置sqlSessionFactory，这个就是和mybatis整合-->
+    <bean id= "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--指定数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--加载全局配置文件-->
+        <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
+        <!--指定Mapper的位置-->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+    </bean>
+    <!--配置扫描器，将mybatis接口实现加入到ioc容器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.echean.dao"/>
+        <property name="sqlSessionFactoryBeanName">
+            <idref bean="sqlSessionFactory"/>
+        </property>
+    </bean>
+    <!--==================配置事务===============================-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--<aop:config>-->
+        <!--&lt;!&ndash;配置切入点&ndash;&gt;-->
+        <!--<aop:pointcut expression="execution(* com.echean.controller..*(..))" id="txPoint"/>-->
+        <!--&lt;!&ndash;配置增强&ndash;&gt;-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>-->
+    <!--</aop:config>-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash;切入点切入的所有方法&ndash;&gt;-->
+            <!--<tx:method name="*"/>-->
+            <!--&lt;!&ndash;以get开始的方法&ndash;&gt;-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+
+
+</beans>

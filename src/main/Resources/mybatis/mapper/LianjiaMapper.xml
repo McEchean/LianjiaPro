@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.echean.dao.LianjiaMapper">
+  <resultMap id="BaseResultMap" type="com.echean.pojo.Lianjia">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="title" jdbcType="VARCHAR" property="title" />
+    <result column="starturl" jdbcType="VARCHAR" property="starturl" />
+    <result column="community" jdbcType="VARCHAR" property="community" />
+    <result column="room" jdbcType="VARCHAR" property="room" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="heading" jdbcType="VARCHAR" property="heading" />
+    <result column="addrs" jdbcType="VARCHAR" property="addrs" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="build_year_info" jdbcType="VARCHAR" property="buildYearInfo" />
+    <result column="rent" jdbcType="VARCHAR" property="rent" />
+    <result column="visitor_num" jdbcType="VARCHAR" property="visitorNum" />
+    <result column="transportation" jdbcType="VARCHAR" property="transportation" />
+    <result column="rent_type" jdbcType="VARCHAR" property="rentType" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="hourse_status" jdbcType="VARCHAR" property="hourseStatus" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.echean.pojo.LianjiaWithBLOBs">
+    <result column="room_facilities" jdbcType="LONGVARCHAR" property="roomFacilities" />
+    <result column="around" jdbcType="LONGVARCHAR" property="around" />
+    <result column="images" jdbcType="LONGVARCHAR" property="images" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, title, starturl, community, room, area, heading, addrs, floor, build_year_info, 
+    rent, visitor_num, transportation, rent_type, pay_type, hourse_status, update_date
+  </sql>
+  <sql id="Blob_Column_List">
+    room_facilities, around, images
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.echean.pojo.LianjiaExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lianjia_rent_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.echean.pojo.LianjiaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lianjia_rent_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.echean.pojo.LianjiaKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lianjia_rent_info
+    where id = #{id,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.echean.pojo.LianjiaKey">
+    delete from lianjia_rent_info
+    where id = #{id,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.echean.pojo.LianjiaExample">
+    delete from lianjia_rent_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.echean.pojo.LianjiaWithBLOBs">
+    insert into lianjia_rent_info (id, title, starturl, 
+      community, room, area, 
+      heading, addrs, floor, 
+      build_year_info, rent, visitor_num, 
+      transportation, rent_type, pay_type, 
+      hourse_status, update_date, room_facilities, 
+      around, images)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{starturl,jdbcType=VARCHAR}, 
+      #{community,jdbcType=VARCHAR}, #{room,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{heading,jdbcType=VARCHAR}, #{addrs,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
+      #{buildYearInfo,jdbcType=VARCHAR}, #{rent,jdbcType=VARCHAR}, #{visitorNum,jdbcType=VARCHAR}, 
+      #{transportation,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, 
+      #{hourseStatus,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{roomFacilities,jdbcType=LONGVARCHAR}, 
+      #{around,jdbcType=LONGVARCHAR}, #{images,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.echean.pojo.LianjiaWithBLOBs">
+    insert into lianjia_rent_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="starturl != null">
+        starturl,
+      </if>
+      <if test="community != null">
+        community,
+      </if>
+      <if test="room != null">
+        room,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="heading != null">
+        heading,
+      </if>
+      <if test="addrs != null">
+        addrs,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="buildYearInfo != null">
+        build_year_info,
+      </if>
+      <if test="rent != null">
+        rent,
+      </if>
+      <if test="visitorNum != null">
+        visitor_num,
+      </if>
+      <if test="transportation != null">
+        transportation,
+      </if>
+      <if test="rentType != null">
+        rent_type,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="hourseStatus != null">
+        hourse_status,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="roomFacilities != null">
+        room_facilities,
+      </if>
+      <if test="around != null">
+        around,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="starturl != null">
+        #{starturl,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null">
+        #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="heading != null">
+        #{heading,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null">
+        #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="buildYearInfo != null">
+        #{buildYearInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="rent != null">
+        #{rent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitorNum != null">
+        #{visitorNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transportation != null">
+        #{transportation,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null">
+        #{rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="hourseStatus != null">
+        #{hourseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomFacilities != null">
+        #{roomFacilities,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="around != null">
+        #{around,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.echean.pojo.LianjiaExample" resultType="java.lang.Long">
+    select count(*) from lianjia_rent_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lianjia_rent_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starturl != null">
+        starturl = #{record.starturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.community != null">
+        community = #{record.community,jdbcType=VARCHAR},
+      </if>
+      <if test="record.room != null">
+        room = #{record.room,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.heading != null">
+        heading = #{record.heading,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrs != null">
+        addrs = #{record.addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floor != null">
+        floor = #{record.floor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildYearInfo != null">
+        build_year_info = #{record.buildYearInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rent != null">
+        rent = #{record.rent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitorNum != null">
+        visitor_num = #{record.visitorNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transportation != null">
+        transportation = #{record.transportation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rentType != null">
+        rent_type = #{record.rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payType != null">
+        pay_type = #{record.payType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hourseStatus != null">
+        hourse_status = #{record.hourseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null">
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.roomFacilities != null">
+        room_facilities = #{record.roomFacilities,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.around != null">
+        around = #{record.around,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.images != null">
+        images = #{record.images,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update lianjia_rent_info
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      starturl = #{record.starturl,jdbcType=VARCHAR},
+      community = #{record.community,jdbcType=VARCHAR},
+      room = #{record.room,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      heading = #{record.heading,jdbcType=VARCHAR},
+      addrs = #{record.addrs,jdbcType=VARCHAR},
+      floor = #{record.floor,jdbcType=VARCHAR},
+      build_year_info = #{record.buildYearInfo,jdbcType=VARCHAR},
+      rent = #{record.rent,jdbcType=VARCHAR},
+      visitor_num = #{record.visitorNum,jdbcType=VARCHAR},
+      transportation = #{record.transportation,jdbcType=VARCHAR},
+      rent_type = #{record.rentType,jdbcType=VARCHAR},
+      pay_type = #{record.payType,jdbcType=VARCHAR},
+      hourse_status = #{record.hourseStatus,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      room_facilities = #{record.roomFacilities,jdbcType=LONGVARCHAR},
+      around = #{record.around,jdbcType=LONGVARCHAR},
+      images = #{record.images,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lianjia_rent_info
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      starturl = #{record.starturl,jdbcType=VARCHAR},
+      community = #{record.community,jdbcType=VARCHAR},
+      room = #{record.room,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      heading = #{record.heading,jdbcType=VARCHAR},
+      addrs = #{record.addrs,jdbcType=VARCHAR},
+      floor = #{record.floor,jdbcType=VARCHAR},
+      build_year_info = #{record.buildYearInfo,jdbcType=VARCHAR},
+      rent = #{record.rent,jdbcType=VARCHAR},
+      visitor_num = #{record.visitorNum,jdbcType=VARCHAR},
+      transportation = #{record.transportation,jdbcType=VARCHAR},
+      rent_type = #{record.rentType,jdbcType=VARCHAR},
+      pay_type = #{record.payType,jdbcType=VARCHAR},
+      hourse_status = #{record.hourseStatus,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.echean.pojo.LianjiaWithBLOBs">
+    update lianjia_rent_info
+    <set>
+      <if test="starturl != null">
+        starturl = #{starturl,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        community = #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null">
+        room = #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="heading != null">
+        heading = #{heading,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null">
+        addrs = #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="buildYearInfo != null">
+        build_year_info = #{buildYearInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="rent != null">
+        rent = #{rent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitorNum != null">
+        visitor_num = #{visitorNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transportation != null">
+        transportation = #{transportation,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null">
+        rent_type = #{rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="hourseStatus != null">
+        hourse_status = #{hourseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomFacilities != null">
+        room_facilities = #{roomFacilities,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="around != null">
+        around = #{around,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.echean.pojo.LianjiaWithBLOBs">
+    update lianjia_rent_info
+    set starturl = #{starturl,jdbcType=VARCHAR},
+      community = #{community,jdbcType=VARCHAR},
+      room = #{room,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      heading = #{heading,jdbcType=VARCHAR},
+      addrs = #{addrs,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      build_year_info = #{buildYearInfo,jdbcType=VARCHAR},
+      rent = #{rent,jdbcType=VARCHAR},
+      visitor_num = #{visitorNum,jdbcType=VARCHAR},
+      transportation = #{transportation,jdbcType=VARCHAR},
+      rent_type = #{rentType,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      hourse_status = #{hourseStatus,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      room_facilities = #{roomFacilities,jdbcType=LONGVARCHAR},
+      around = #{around,jdbcType=LONGVARCHAR},
+      images = #{images,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.echean.pojo.Lianjia">
+    update lianjia_rent_info
+    set starturl = #{starturl,jdbcType=VARCHAR},
+      community = #{community,jdbcType=VARCHAR},
+      room = #{room,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      heading = #{heading,jdbcType=VARCHAR},
+      addrs = #{addrs,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      build_year_info = #{buildYearInfo,jdbcType=VARCHAR},
+      rent = #{rent,jdbcType=VARCHAR},
+      visitor_num = #{visitorNum,jdbcType=VARCHAR},
+      transportation = #{transportation,jdbcType=VARCHAR},
+      rent_type = #{rentType,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      hourse_status = #{hourseStatus,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+  </update>
+</mapper>
