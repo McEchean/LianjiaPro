@@ -1,8 +1,8 @@
 package com.echean.controller;
 
+import com.echean.dao.LianjiaMapper;
 import com.echean.pojo.Lianjia;
 import com.echean.pojo.LianjiaExample;
-import com.echean.dao.LianjiaMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.ApplicationContext;

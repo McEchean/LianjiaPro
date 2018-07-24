@@ -16,4 +16,4 @@
 <%--</form>--%>
 <%--</body>--%>
 <%--</html>--%>
-<jsp:forward page="/Lianjias.do"></jsp:forward>
+<jsp:forward page="/User.do"></jsp:forward>

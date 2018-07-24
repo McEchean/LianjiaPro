@@ -2,8 +2,6 @@ package com.echean.dao;
 
 import com.echean.pojo.User;
 import com.echean.pojo.UserExample;
-import com.echean.pojo.UserKey;
-import com.echean.pojo.UserWithBLOBs;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,27 +11,21 @@ public interface UserMapper {
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(UserKey key);
+    int deleteByPrimaryKey(Integer id);
 
-    int insert(UserWithBLOBs record);
+    int insert(User record);
 
-    int insertSelective(UserWithBLOBs record);
-
-    List<UserWithBLOBs> selectByExampleWithBLOBs(UserExample example);
+    int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
 
-    UserWithBLOBs selectByPrimaryKey(UserKey key);
+    User selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") UserWithBLOBs record, @Param("example") UserExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") UserWithBLOBs record, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByPrimaryKeySelective(UserWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(UserWithBLOBs record);
+    int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
 }

@@ -30,13 +30,4 @@ public class LianjiaWithBLOBs extends Lianjia {
     public void setImages(String images) {
         this.images = images == null ? null : images.trim();
     }
-
-    @Override
-    public String toString() {
-        return "LianjiaWithBLOBs{" +
-                "roomFacilities='" + roomFacilities + '\'' +
-                ", around='" + around + '\'' +
-                ", images='" + images + '\'' +
-                '}';
-    }
 }

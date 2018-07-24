@@ -152,25 +152,4 @@ public class Lianjia extends LianjiaKey {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-
-    @Override
-    public String toString() {
-        return "Lianjia{" +
-                "starturl='" + starturl + '\'' +
-                ", community='" + community + '\'' +
-                ", room='" + room + '\'' +
-                ", area='" + area + '\'' +
-                ", heading='" + heading + '\'' +
-                ", addrs='" + addrs + '\'' +
-                ", floor='" + floor + '\'' +
-                ", buildYearInfo='" + buildYearInfo + '\'' +
-                ", rent='" + rent + '\'' +
-                ", visitorNum='" + visitorNum + '\'' +
-                ", transportation='" + transportation + '\'' +
-                ", rentType='" + rentType + '\'' +
-                ", payType='" + payType + '\'' +
-                ", hourseStatus='" + hourseStatus + '\'' +
-                ", updateDate=" + updateDate +
-                '}';
-    }
 }

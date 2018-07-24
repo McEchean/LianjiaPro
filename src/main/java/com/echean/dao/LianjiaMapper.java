@@ -5,9 +5,9 @@ import com.echean.pojo.LianjiaExample;
 import com.echean.pojo.LianjiaKey;
 import com.echean.pojo.LianjiaWithBLOBs;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 public interface LianjiaMapper {
     long countByExample(LianjiaExample example);
 
