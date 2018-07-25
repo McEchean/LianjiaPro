@@ -32,6 +32,20 @@
         <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
         <!--指定Mapper的位置-->
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+
+        <!--&lt;!&ndash; 配置分页插件 &ndash;&gt;-->
+        <!--<property name="plugins">-->
+            <!--<array>-->
+                <!--<bean class="com.github.pagehelper.PageInterceptor">-->
+                    <!--<property name="properties">-->
+                        <!--&lt;!&ndash;使用下面的方式配置参数，一行配置一个 &ndash;&gt;-->
+                        <!--<value>-->
+                            <!--params=value1-->
+                        <!--</value>-->
+                    <!--</property>-->
+                <!--</bean>-->
+            <!--</array>-->
+        <!--</property>-->
     </bean>
     <!--配置扫描器，将mybatis接口实现加入到ioc容器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

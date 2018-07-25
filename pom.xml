@@ -139,6 +139,14 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2</version>
         </dependency>
+
+        <!--pageHelper分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.4</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>ssm</finalName>

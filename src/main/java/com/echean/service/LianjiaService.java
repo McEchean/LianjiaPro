@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GetLianjiasService {
-
+public class LianjiaService {
     @Autowired
     LianjiaMapper lianjiaMapper;
-
-    public List<Lianjia> getAllLianjias() {
-        return lianjiaMapper.selectByExample(null);
+    public List<Lianjia> getLianjias () {
+       return lianjiaMapper.selectByExample(null);
     }
 }
