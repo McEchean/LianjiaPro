@@ -36,4 +36,6 @@ public interface LianjiaMapper {
     int updateByPrimaryKeyWithBLOBs(LianjiaWithBLOBs record);
 
     int updateByPrimaryKey(Lianjia record);
+
+    LianjiaWithBLOBs selectByid(Integer id) throws Exception;
 }

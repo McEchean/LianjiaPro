@@ -129,6 +129,9 @@
     where id = #{id,jdbcType=INTEGER}
       and title = #{title,jdbcType=VARCHAR}
   </select>
+  <select id="selectByid" parameterType="Integer" resultType="LianjiaWithBLOBs">
+    select * from lianjia_rent_info where id = #{value}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.echean.pojo.LianjiaKey">
     delete from lianjia_rent_info
     where id = #{id,jdbcType=INTEGER}

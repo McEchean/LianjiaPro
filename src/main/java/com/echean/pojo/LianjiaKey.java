@@ -1,5 +1,8 @@
 package com.echean.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class LianjiaKey {
     private Integer id;
 

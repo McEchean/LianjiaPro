@@ -1,9 +1,12 @@
 package com.echean.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class LianjiaExample {
     protected String orderByClause;
 
