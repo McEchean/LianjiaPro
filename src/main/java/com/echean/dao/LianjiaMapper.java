@@ -21,6 +21,8 @@ public interface LianjiaMapper {
 
     List<LianjiaWithBLOBs> selectByExampleWithBLOBs(LianjiaExample example);
 
+    List<LianjiaWithBLOBs> selectByExampleWithBLOBsDesc(LianjiaExample example);
+
     List<Lianjia> selectByExample(LianjiaExample example);
 
     LianjiaWithBLOBs selectByPrimaryKey(LianjiaKey key);

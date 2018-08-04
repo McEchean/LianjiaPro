@@ -106,6 +106,22 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByExampleWithBLOBsDesc" parameterType="com.echean.pojo.LianjiaExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lianjia_rent_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause} desc
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.echean.pojo.LianjiaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

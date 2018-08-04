@@ -9,14 +9,14 @@ public class MsgBean {
     public static MsgBean success(){
         MsgBean msgBean = new MsgBean();
         msgBean.setStatus(200);
-        msgBean.setMsg("成功！");
+        msgBean.setMsg("true");
         return msgBean;
     }
 
     public static MsgBean faild(){
         MsgBean msgBean = new MsgBean();
         msgBean.setStatus(100);
-        msgBean.setMsg("失败！");
+        msgBean.setMsg("false");
         return msgBean;
     }
 

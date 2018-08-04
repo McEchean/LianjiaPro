@@ -29,21 +29,14 @@
                 排序
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li id="l1"><a href="#">由低到高</a></li>
-                <li id="l2"><a href="#">由高到低</a></li>
-                <li id="l3"><a href="#">综合排序</a></li>
-                <%--<li role="separator" class="divider"></li>--%>
-                <%--<li><a href="#">Separated link</a></li>--%>
-            </ul>
         </div>
         <div class="col-md-2 col-md-offset-10">
-            <button type="button" class="btn btn-primary">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>新增
-            </button>
-            <button type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
-            </button>
+            <a class="btn btn-default" href="#" role="button" id="login_btn">
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登录
+            </a>
+            <a class="btn btn-default" href="#" role="button" id="register_btn">
+                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 注册
+            </a>
         </div>
     </div>
     <%--数据--%>
@@ -67,7 +60,7 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modaldetail -->
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -81,9 +74,128 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">好</button>
+                <%--<button type="button" class="btn btn-primary" data-dismiss="modal">好</button>--%>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modallogin -->
+<div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelLogin">登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="LoginUsername" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input name="username" type="text" class="form-control" id="LoginUsername" placeholder="Email@Email.com">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="LoginPassword" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input name="password" type="password" class="form-control" id="LoginPassword" placeholder="Password">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 记住用户名
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-10 col-sm-2">
+                            <button type="submit" class="btn btn-default" id="login">登录</button>
+                            <%--<button class="btn btn-default" data-dismiss="modal">取消</button>--%>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                <%--<button type="button" class="btn btn-primary">Save changes</button>--%>
+            <%--</div>--%>
+        </div>
+    </div>
+</div>
+
+<!-- Modalregister -->
+<div class="modal fade" id="ModalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelRegister">注册</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputUsername4" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-8">
+                            <input name="username" type="text" class="form-control" id="inputUsername4" placeholder="Username">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword4" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-8">
+                            <input name="password" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail4" class="col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-5">
+                            <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Example@example.com">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone" class="col-sm-2 control-label">手机</label>
+                        <div class="col-sm-5">
+                            <input name="telephone" type="text" class="form-control" id="inputPhone" placeholder="130xxxxxxxx">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">昵称</label>
+                        <div class="col-sm-5">
+                            <input name="name" type="text" class="form-control" id="inputName" placeholder="昵称">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="InputSex1" class="col-sm-2 control-label">性别</label>
+                        <label class="col-sm-offset-1 radio-inline">
+                            <input type="radio" name="sex" id="InputSex1" value="1"> 男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" id="InputSex2" value="2"> 女
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-10 col-sm-2">
+                            <button type="submit" class="btn btn-default" id="register">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                <%--<button type="button" class="btn btn-primary">Save changes</button>--%>
+            <%--</div>--%>
         </div>
     </div>
 </div>
@@ -97,39 +209,48 @@
 <%--使用ajax需要加入jQuery的引入--%>
 <script type="text/javascript">
     $(function () {
-        to_page(1);
+        to_page(1,1);
     });
 
-    function to_page(pn) {
+    function to_page(pn,type) {
         $.ajax({
                 url: "${app_path}/LianjiaMore.do",
-                data: "pn=" + pn,
+                data: "pn=" + pn +"&type="+type,
                 type: "GET",
                 success: function (result) {
                     // console.log(result)
                     //    具体信息的填充
-                    Build_Lianjia_table(result);
+                    Build_Lianjia_table(result,type);
                     //    分页信息的填充
-                    Build_pageinfo(result);
+                    Build_pageinfo(result,type);
+                    //显示排序信息
+                    Build_orderinfo(result,type);
+
+                    Build_orderinfo;
                 }
             }
         );
 
     }
-    function order() {
-        $("#li1").click(function () {
-            $.ajax({
-                url:"${app_path}/lianjia/1/lianjiaorder.do",
-                type:"GET",
-                success:function (result) {
-                    Build_Lianjia_table(result);
-                }
-            })
+    function Build_orderinfo() {
+        var ul = $("<ul></ul>").addClass("dropdown-menu").attr("aria-labelledby", "dropdownMenu1");
+        var li1 = $("<li></li>").append($("<a></a>").attr("href","#").append("由低到高"));
+        var li2 = $("<li></li>").append($("<a></a>").attr("href","#").append("由高到低"));
+        var li3 = $("<li></li>").append($("<a></a>").attr("href","#").append("综合排序"));
+        ul.append(li1).append(li2).append(li3).appendTo(".dropdown");
+        li1.click(function () {
+            to_page(1,1);
+        })
+        li2.click(function () {
+            to_page(1,2);
+        })
+        li3.click(function () {
+            to_page(1,3);
         })
     }
 
 
-    function Build_Lianjia_table(result) {
+    function Build_Lianjia_table(result,type) {
         $("#tableinfo tbody").empty();
         var Lianjias = result.extend.pageinfo.list;
         // var images = result.extend.image;
@@ -192,7 +313,7 @@
         }
     }
 
-    function Build_pageinfo(result) {
+    function Build_pageinfo(result,type) {
         $("#page_info_nav").empty();
         var nav = $("<nav></nav>").attr("aria-label", "Page navigation");
         var ul = $("<ul></ul>").addClass("pagination");
@@ -204,10 +325,10 @@
             previousPage.addClass("disabled");
         } else {
             firstPage.click(function () {
-                to_page(1)
+                to_page(1,type)
             });
             previousPage.click(function () {
-                to_page(pageinfo.prePage)
+                to_page(pageinfo.prePage,type)
             });
         }
 
@@ -218,10 +339,10 @@
             lastPage.addClass("disabled");
         } else {
             nextPage.click(function () {
-                to_page(pageinfo.nextPage)
+                to_page(pageinfo.nextPage,type)
             });
             lastPage.click(function () {
-                to_page(pageinfo.pages)
+                to_page(pageinfo.pages,type)
             });
         }
         ul.append(firstPage).append(previousPage);
@@ -229,7 +350,7 @@
             var pageView = $("<li></li>").append($("<a></a>").attr("href", "#").append(item));
             ul.append(pageView);
             pageView.click(function () {
-                to_page(item);
+                to_page(item,type);
             })
             if (item == pageinfo.pageNum) {
                 pageView.addClass("active");
@@ -238,6 +359,218 @@
         ul.append(nextPage).append(lastPage);
         nav.append(ul).appendTo("#page_info_nav");
     }
+
+    function vailued_login_formdata() {
+        var usernameVal = $("#LoginUsername").val();
+        var regusername = /^[0-9a-zA-Z_\-]{6,16}$/;
+        if (!regusername.test(usernameVal)) {
+            show_status("#LoginUsername","faild","用户名可以是包含数字字母下划线的6到16位组成");
+            return false;
+        }else {
+            show_status("#LoginUsername","success","");
+        }
+
+        var passwordVal = $("#LoginPassword").val();
+        var regpassword = /^[0-9a-zA-Z_\-\[\]]{6,16}$/;
+        if (!regpassword.test(passwordVal)) {
+            show_status("#LoginPassword","faild","密码由数字字母下划线的6到16位组成");
+            return false;
+        }else {
+            show_status("#LoginPassword","success","");
+        }
+        return true;
+    }
+
+    $("#login").click(function () {
+        //数据校验
+        alert(vailued_login_formdata());
+        if (!vailued_login_formdata()) {
+            return false;
+        }
+        $.ajax({
+            url:"${app_path}/user/login.do",
+            data:$("#ModalLogin form").serialize(),
+            type:"GET",
+            success:function (result) {
+                if(result.msg=="false") {
+
+                }
+            }
+        })
+    })
+    function vailued_register_formdata() {
+        var usernameVal = $("#inputUsername4").val();
+        var regusername = /^[0-9a-zA-Z_\-]{6,16}$/;
+        if (!regusername.test(usernameVal)) {
+            show_status("#inputUsername4","faild","用户名可以是包含数字字母下划线的6到16位组成");
+            return false;
+        }else {
+            show_status("#inputUsername4","success","");
+        }
+
+        var passwordVal = $("#inputPassword4").val();
+        var regpassword = /^[0-9a-zA-Z_\-\[\]]{6,16}$/;
+        if (!regpassword.test(passwordVal)) {
+            show_status("#inputPassword4","faild","密码由数字字母下划线的6到16位组成");
+            return false;
+        }else {
+            show_status("#inputPassword4","success","");
+        }
+
+        var emailVal = $("#inputEmail4").val();
+        var regemail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (!regemail.test(emailVal)) {
+            show_status("#inputEmail4","faild","邮箱格式不正确");
+            return false;
+        }else {
+            show_status("#inputEmail4","success","");
+        }
+        var phoneVal = $("#inputPhone").val();
+        var regphone = /^1(3|4|5|7|8)\d{9}$/;
+        if (!regphone.test(phoneVal)) {
+            show_status("#inputPhone","faild","请填写正确手机号");
+            return false;
+        }else {
+            show_status("#inputPhone","success","");
+        }
+
+        var nameVal = $("#inputName").val();
+        var regname = /^[0-9a-zA-Z_\-\[\]\u4e00-\u9fff]{1,10}$/;
+        if (!regname.test(nameVal)) {
+            show_status("#inputName","faild","昵称为1到10位");
+            return false;
+        }else {
+            show_status("#inputName","success","");
+        }
+        return true;
+    }
+    function show_status(ele, status, msg) {
+        $(ele).parent().removeClass("has-success has-error");
+        $(ele).next("span").text("");
+        if (status == "success") {
+            $(ele).parent().addClass("has-success");
+            $(ele).next("span").append(msg);
+        }else if (status == "faild") {
+            $(ele).parent().addClass("has-error");
+            $(ele).next("span").append(msg);
+        }
+    }
+
+    $("#register").click(function () {
+        //数据校验
+        if (!vailued_register_formdata()) {
+            return false;
+        }
+        var first = $("#ModalRegister form").attr("ajax");
+        if(first != "success"){
+            return false;
+        }
+
+        $.ajax({
+            url:"${app_path}/user/register.do",
+            data:$("#ModalRegister form").serialize(),
+            type:"POST",
+            success:function (result) {
+                if(result.msg=="false") {
+                    alert("添加失败！")
+                }else {
+                    alert("添加成功！")
+                    $('#ModalRegister').modal('hide');
+                }
+            }
+        })
+    })
+
+    //到数据库验证是否可用
+    $("#inputUsername4").change(function () {
+        var regusername = /^[0-9a-zA-Z_\-]{6,16}$/;
+        var modelForm = $("#ModalRegister form");
+        vailued_data("#inputUsername4","用户名可以是包含数字字母下划线的6到16位组成",regusername,modelForm);
+        var first = modelForm.attr("ajax");
+        $.ajax({
+            url:"${app_path}/user/usernameCheck.do",
+            data:"username=" + $(this).val(),
+            type:"POST",
+            success:function (result) {
+                if(result.status == 200 && first == "success") {
+                    show_status("#inputUsername4","success","用户名可用");
+                }else if (result.status == 100 && first == "success") {
+                    show_status("#inputUsername4","faild","用户名不可用");
+                    modelForm.attr("ajax","error");
+                }
+            }
+        })
+
+    })
+
+    $("#inputPhone").change(function () {
+        var regphone = /^1(3|4|5|7|8)\d{9}$/;
+        var modelForm = $("#ModalRegister form");
+        vailued_data("#inputPhone","请填写正确手机号",regphone,modelForm);
+        var first = modelForm.attr("ajax");
+        $.ajax({
+            url:"${app_path}/user/phoneCheck.do",
+            data:"phone=" + $(this).val(),
+            type:"POST",
+            success:function (result) {
+                $(this).next("span").text("");
+                if(result.status == 200 && first == "success") {
+                    show_status("#inputPhone","success","手机号可用");
+                }else if (result.status == 100 && first == "success") {
+                    show_status("#inputPhone","faild","此手机号已注册");
+                    modelForm.attr("ajax","error");
+                }
+            }
+        })
+
+    })
+
+    $("#inputEmail4").change(function () {
+        var regemail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        var modelForm = $("#ModalRegister form");
+        vailued_data("#inputEmail4","邮箱格式不正确",regemail,modelForm);
+        var first = modelForm.attr("ajax");
+        $.ajax({
+            url:"${app_path}/user/emailCheck.do",
+            data:"email=" + $(this).val(),
+            type:"POST",
+            success:function (result) {
+                if(result.status == 200 && first == "success") {
+                    show_status("#inputEmail4","success","邮箱可用");
+                }else if (result.status == 100 && first == "success") {
+                    show_status("#inputEmail4","faild","邮箱已注册");
+                    modelForm.attr("ajax","error");
+                }
+            }
+        })
+
+    })
+    function vailued_data(ele,msg,reg,modelForm) {
+        var val = $(ele).val();
+        var reg = reg;
+        if (!reg.test(val)) {
+            show_status(ele,"faild",msg);
+            modelForm.attr("ajax","error");
+        }else {
+            show_status(ele,"success","");
+            modelForm.attr("ajax","success");
+        }
+    }
+    $("#login_btn").click(function () {
+        $("#ModalLogin form")[0].reset();
+        $("#ModalLogin").modal({
+            backdrop:"static"
+        });
+    })
+
+    $("#register_btn").click(function () {
+        $("#ModalRegister form")[0].reset();
+        // $("#ModalRegister span").text("");
+        $("#ModalRegister").modal({
+            backdrop:"static"
+        });
+    })
+
 </script>
 <%--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"--%>
 <%--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"--%>

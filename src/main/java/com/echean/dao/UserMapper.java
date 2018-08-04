@@ -21,6 +21,8 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer id);
 
+    User selectByNameAndPwd (User user) throws Exception;
+
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
@@ -28,4 +30,5 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
 }
